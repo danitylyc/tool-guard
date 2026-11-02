@@ -1,5 +1,7 @@
 # ToolGuard — framework-agnostic tool-call governance for LLM agents
 
+> 中文版: [README_zh.md](./README_zh.md)
+
 ToolGuard is a drop-in governance layer for the **tool-call step** of LLM agents.
 It solves a real, recurring production problem: tool calls are the main source
 of uncontrolled cost and unreliability in agent deployments, and mainstream
