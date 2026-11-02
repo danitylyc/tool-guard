@@ -1,0 +1,33 @@
+{
+  "S1_duplicate_calls": {
+    "naive": {
+      "mode": "naive",
+      "tool_executions": 3,
+      "cache_hits": 0,
+      "wall_ms": 0.0,
+      "out_tokens_total": 3036
+    },
+    "guarded": {
+      "mode": "guarded",
+      "tool_executions": 1,
+      "cache_hits": 2,
+      "wall_ms": 8.7,
+      "out_tokens_total": 324
+    }
+  },
+  "S2_oversized_output": {
+    "raw_chars": 100007,
+    "raw_tokens_est": 25001,
+    "bounded_chars": 832,
+    "bounded_tokens_est": 208,
+    "reduction_pct": 99.2,
+    "truncated": true,
+    "wall_ms": 3.1
+  },
+  "S3_flaky_tool": {
+    "result": "SUCCESS",
+    "retries": 2,
+    "status": "ok",
+    "wall_ms": 33.5
+  }
+}
