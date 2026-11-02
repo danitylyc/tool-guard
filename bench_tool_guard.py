@@ -34,7 +34,7 @@ def scenario1_duplicate_calls():
         fn = query_db
         if mode == "guarded":
             guard = ToolGuard(fn, name="query_db", cache_dir=os.path.join(OUT_DIR, "cache_s1"),
-                              max_output_tokens=100)
+                              max_output_tokens=100, telemetry_path=TELEMETRY)
             fn = guard
         t0 = time.time()
         for _ in range(3):
@@ -71,7 +71,7 @@ def scenario2_oversized_output():
         return big
 
     guard = ToolGuard(dump_all, name="dump_all", cache_dir=os.path.join(OUT_DIR, "cache_s2"),
-                      max_output_tokens=200)
+                      max_output_tokens=200, telemetry_path=TELEMETRY)
     raw_tokens = estimate_tokens(big)
     t0 = time.time()
     out = guard()
@@ -99,7 +99,8 @@ def scenario3_flaky_tool():
         return "SUCCESS"
 
     guard = ToolGuard(flaky, name="flaky", cache_dir=os.path.join(OUT_DIR, "cache_s3"),
-                      policy=CallPolicy(max_retries=3, backoff_base=0.01))
+                      policy=CallPolicy(max_retries=3, backoff_base=0.01),
+                      telemetry_path=TELEMETRY)
     t0 = time.time()
     result = guard()
     wall = time.time() - t0
